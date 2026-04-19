@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Independent Artist Month — July 2026</title>
+  <meta name="description" content="Independent Artist Month is a global celebration of independent artists every July. Celebrate. Support. Share." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(180deg, #1e1e1e 0%, #0d0d0d 30%, #000000 100%);
+      background-attachment: fixed;
+      color: #fff;
+      font-family: 'Arial Narrow', Arial, sans-serif;
+    }
+
+    /* NAV */
+    nav {
+      background: rgba(0,0,0,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 52px;
+      border-bottom: 1px solid #1a1a1a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-size: 13px; font-weight: 900; letter-spacing: 0.12em; color: #E8D5A3; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 0; }
+    .nav-links a {
+      color: #666;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0 12px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .nav-links a:hover { color: #E8D5A3; border-bottom-color: #E8D5A3; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    /* Replace the div below with a <video> tag when ready */
+    .hero-video-placeholder {
+      position: absolute;
+      inset: 0;
+      background: #050505;
+      z-index: 0;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-logo {
+      width: 260px;
+      height: auto;
+      margin-bottom: 1.75rem;
+    }
+    .hero-h1 {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #E8D5A3;
+      margin-bottom: 0.4rem;
+    }
+    .hero-dates {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .hero-tagline {
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn-red {
+      background: #CC2200;
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-gold-outline {
+      background: none;
+      color: #E8D5A3;
+      border: 1px solid #E8D5A3;
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-red:hover { background: #aa1c00; }
+    .btn-gold-outline:hover { background: rgba(232,213,163,0.08); }
+
+    /* SECTIONS */
+    .divider { height: 1px; background: #1a1a1a; }
+    .sec { padding: 4rem 2rem; }
+    .sec-inner { max-width: 880px; margin: 0 auto; }
+    .sec-tag {
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #CC2200;
+      margin-bottom: 0.75rem;
+    }
+    .sec-h {
+      font-size: 34px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .sec-h span { color: #E8D5A3; }
+
+    /* WHAT IS IAM */
+    #what { background: transparent; }
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #1a1a1a;
+      margin-top: 2rem;
+    }
+    .what-card { background: #0d0d0d; padding: 2rem 1.5rem; }
+    .what-num { font-size: 32px; font-weight: 900; color: #CC2200; margin-bottom: 0.75rem; line-height: 1; }
+    .what-text { font-size: 14px; color: #888; line-height: 1.6; font-weight: 700; letter-spacing: 0.02em; }
+
+    /* HOW TO CELEBRATE */
+    #how { background: transparent; }
+    .how-list { list-style: none; margin-top: 1.75rem; display: flex; flex-direction: column; gap: 1px; }
+    .how-item {
+      background: #0d0d0d;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .how-bullet { width: 6px; height: 6px; background: #CC2200; flex-shrink: 0; }
+    .how-item span {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #ccc;
+      text-transform: uppercase;
+    }
+
+    /* FOR ARTISTS */
+    #artists { background: transparent; }
+    .artist-list { list-style: none; margin-top: 1.75rem; display: flex; flex-direction: column; gap: 1px; }
+    .artist-item {
+      background: #0d0d0d;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border-left: 3px solid #CC2200;
+    }
+    .artist-item span {
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #ccc;
+      text-transform: uppercase;
+      padding-left: 1.25rem;
+    }
+
+    /* PLAYLISTS */
+    #playlists { background: transparent; }
+    .playlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+      gap: 1px;
+      background: #1a1a1a;
+      margin-top: 2rem;
+    }
+    .pl-card { background: #0d0d0d; padding: 1.25rem; }
+    .pl-art {
+      height: 90px;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pl-art img { width: 100%; height: 100%; object-fit: cover; }
+    .pl-art-placeholder { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: #333; font-weight: 900; }
+    .pl-genre { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #CC2200; font-weight: 900; margin-bottom: 4px; }
+    .pl-name { font-size: 13px; font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+    .pl-links { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pl-link {
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #E8D5A3;
+      border: 1px solid #2a2a2a;
+      padding: 4px 9px;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .pl-link:hover { border-color: #E8D5A3; }
+
+    /* JOIN IAC */
+    #iac { background: transparent; }
+    .iac-block {
+      background: #0d0d0d;
+      border: 1px solid #CC2200;
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+    .iac-eyebrow { font-size: 10px; font-weight: 900; letter-spacing: 0.22em; text-transform: uppercase; color: #888; margin-bottom: 0.75rem; }
+    .iac-h { font-size: 32px; font-weight: 900; text-transform: uppercase; color: #fff; margin-bottom: 0.5rem; }
+    .iac-sub { font-size: 13px; color: #666; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-bottom: 2rem; }
+    .btn-discord {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #5865F2;
+      border: none;
+      color: #fff;
+      padding: 14px 32px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+    }
+    .btn-discord:hover { background: #4752c4; }
+
+    /* SUPPORT */
+    #support { background: transparent; }
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: #1a1a1a;
+      margin-top: 2rem;
+    }
+    .support-card { background: #0d0d0d; padding: 1.75rem 1.5rem; }
+    .support-card h3 {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E8D5A3;
+      margin-bottom: 0.6rem;
+    }
+    .support-card p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 1rem; }
+    .support-card a {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #E8D5A3;
+      border-bottom: 1px solid #333;
+      padding-bottom: 2px;
+      text-decoration: none;
+    }
+    .support-card a:hover { border-bottom-color: #E8D5A3; }
+
+    /* EMAIL */
+    #email {
+      background: #000;
+      border-top: 1px solid #1a1a1a;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .email-h { font-size: 30px; font-weight: 900; text-transform: uppercase; color: #fff; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+    .email-sub { font-size: 12px; color: #666; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; margin-bottom: 2rem; }
+    .email-row { display: flex; max-width: 420px; margin: 0 auto; }
+    .email-row input {
+      flex: 1;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-right: none;
+      color: #fff;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+    }
+    .email-row input::placeholder { color: #444; }
+    .email-row input:focus { border-color: #444; }
+    .email-row button {
+      background: #E8D5A3;
+      border: none;
+      color: #000;
+      padding: 14px 22px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .email-row button:hover { background: #d4c190; }
+
+    /* FOOTER */
+    footer {
+      background: #000;
+      border-top: 1px solid #111;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    footer p { font-size: 10px; color: #333; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 900; }
+    footer span { color: #E8D5A3; }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      .nav-links a { padding: 0 8px; font-size: 9px; }
+      .hero-dates { font-size: 26px; }
+      .sec-h { font-size: 26px; }
+      .what-grid { grid-template-columns: 1fr; }
+      .hero-logo { width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">I.A.M. 2026</div>
+    <div class="nav-links">
+      <a href="#what">What</a>
+      <a href="#how">Celebrate</a>
+      <a href="#artists">Artists</a>
+      <a href="#playlists">Playlists</a>
+      <a href="#iac">Join IAC</a>
+      <a href="#support">Support</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-video-placeholder"></div>
+    <div class="hero-video-bg"></div>
+    <!--
+      TO ADD VIDEO: Replace the hero-video-placeholder div above with:
+      <video autoplay muted loop playsinline class="hero-video-placeholder" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+        <source src="videos/hero.mp4" type="video/mp4">
+      </video>
+    -->
+    <div class="hero-inner">
+      <img src="images/IAM_TRANS_LOGO.png" alt="Independent Artist Month" class="hero-logo" />
+      <div class="hero-h1">Independent Artist Month</div>
+      <div class="hero-dates">July 1–31</div>
+      <div class="hero-tagline">Celebrate. Support. Share.</div>
+      <div class="hero-btns">
+        <a href="#support" class="btn-red">Show Your Support</a>
+        <a href="https://discord.gg/YOUR-INVITE-LINK" target="_blank" class="btn-gold-outline">Join the Movement</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHAT IS IAM -->
+  <section id="what" class="sec">
+    <div class="sec-inner">
+      <div class="sec-tag">What is I.A.M.</div>
+      <div class="sec-h">A Global <span>Celebration</span></div>
+      <div class="what-grid">
+        <div class="what-card">
+          <div class="what-num">01</div>
+          <div class="what-text">A global celebration of independent artists</div>
+        </div>
+        <div class="what-card">
+          <div class="what-num">02</div>
+          <div class="what-text">Creative voices moving together</div>
+        </div>
+        <div class="what-card">
+          <div class="what-num">03</div>
+          <div class="what-text">No gatekeepers. Just connection.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HOW TO CELEBRATE -->
+  <section id="how" class="sec">
+    <div class="sec-inner">
+      <div class="sec-tag">How to Celebrate</div>
+      <div class="sec-h">Take <span>Action</span></div>
+      <ul class="how-list">
+        <li class="how-item"><div class="how-bullet"></div><span>Buy directly from independent artists</span></li>
+        <li class="how-item"><div class="how-bullet"></div><span>Share music using IAM hashtags and sticker</span></li>
+        <li class="how-item"><div class="how-bullet"></div><span>Tip the artist</span></li>
+        <li class="how-item"><div class="how-bullet"></div><span>Stream and share IAM playlists</span></li>
+        <li class="how-item"><div class="how-bullet"></div><span>Support independent platforms</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOR ARTISTS -->
+  <section id="artists" class="sec">
+    <div class="sec-inner">
+      <div class="sec-tag">For Artists</div>
+      <div class="sec-h">Show <span>Up.</span></div>
+      <ul class="artist-list">
+        <li class="artist-item"><span>Post your work during July</span></li>
+        <li class="artist-item"><span>Use IAM sticker + hashtags</span></li>
+        <li class="artist-item"><span>Engage with other artists</span></li>
+        <li class="artist-item"><span>Join IAC to connect year-round</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PLAYLISTS -->
+  <section id="playlists" class="sec">
+    <div class="sec-inner">
+      <div class="sec-tag">Community Playlists</div>
+      <div class="sec-h">Music For <span>Every Soul</span></div>
+      <div class="playlist-grid">
+
+        <div class="pl-card">
+          <div class="pl-art"><span class="pl-art-placeholder">Cover Art</span></div>
+          <div class="pl-genre">R&amp;B</div>
+          <div class="pl-name">R&amp;B Soul Collection</div>
+          <div class="pl-links">
+            <a href="#" class="pl-link">Spotify</a>
+            <a href="#" class="pl-link">Apple</a>
+          </div>
+        </div>
+
+        <div class="pl-card">
+          <div class="pl-art"><span class="pl-art-placeholder">Cover Art</span></div>
+          <div class="pl-genre">Hip-Hop</div>
+          <div class="pl-name">Hip-Hop Underground</div>
+          <div class="pl-links">
+            <a href="#" class="pl-link">Spotify</a>
+            <a href="#" class="pl-link">Apple</a>
+          </div>
+        </div>
+
+        <div class="pl-card">
+          <div class="pl-art"><span class="pl-art-placeholder">Cover Art</span></div>
+          <div class="pl-genre">Jazz</div>
+          <div class="pl-name">Jazz &amp; Beyond</div>
+          <div class="pl-links">
+            <a href="#" class="pl-link">Spotify</a>
+            <a href="#" class="pl-link">YouTube</a>
+          </div>
+        </div>
+
+        <div class="pl-card">
+          <div class="pl-art"><span class="pl-art-placeholder">Cover Art</span></div>
+          <div class="pl-genre">Christian / Inspirational</div>
+          <div class="pl-name">Faith &amp; Spirit</div>
+          <div class="pl-links">
+            <a href="#" class="pl-link">Spotify</a>
+            <a href="#" class="pl-link">Apple</a>
+          </div>
+        </div>
+
+        <div class="pl-card">
+          <div class="pl-art"><span class="pl-art-placeholder">Cover Art</span></div>
+          <div class="pl-genre">Country</div>
+          <div class="pl-name">Country Roads</div>
+          <div class="pl-links">
+            <a href="#" class="pl-link">Spotify</a>
+            <a href="#" class="pl-link">Apple</a>
+          </div>
+        </div>
+
+        <div class="pl-card">
+          <div class="pl-art"><span class="pl-art-placeholder">Cover Art</span></div>
+          <div class="pl-genre">Dance</div>
+          <div class="pl-name">Dance &amp; Electronic</div>
+          <div class="pl-links">
+            <a href="#" class="pl-link">Spotify</a>
+            <a href="#" class="pl-link">YouTube</a>
+          </div>
+        </div>
+
+        <div class="pl-card">
+          <div class="pl-art"><span class="pl-art-placeholder">Cover Art</span></div>
+          <div class="pl-genre">Alternative</div>
+          <div class="pl-name">Alt &amp; Indie</div>
+          <div class="pl-links">
+            <a href="#" class="pl-link">Spotify</a>
+            <a href="#" class="pl-link">Apple</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- JOIN IAC -->
+  <section id="iac" class="sec">
+    <div class="sec-inner">
+      <div class="iac-block">
+        <div class="iac-eyebrow">Where the movement lives after July</div>
+        <div class="iac-h">Join IAC</div>
+        <div class="iac-sub">Connect. Collaborate. Grow.</div>
+        <a href="https://discord.gg/YOUR-INVITE-LINK" target="_blank" class="btn-discord">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+          Join IAC Discord
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SUPPORT -->
+  <section id="support" class="sec">
+    <div class="sec-inner">
+      <div class="sec-tag">Support</div>
+      <div class="sec-h">Show <span>Real Love</span></div>
+      <div class="support-grid">
+        <div class="support-card">
+          <h3>Follow</h3>
+          <p>Follow independent artists on every platform. Your follow is a signal.</p>
+          <a href="#">Find Artists</a>
+        </div>
+        <div class="support-card">
+          <h3>Share</h3>
+          <p>Post their music. Tag them. Tell people why it moved you.</p>
+          <a href="#">Get the Sticker</a>
+        </div>
+        <div class="support-card">
+          <h3>Support Directly</h3>
+          <p>Buy music, merch, or tip them directly. Your money goes straight to the artist.</p>
+          <a href="https://ko-fi.com" target="_blank">Ko-fi</a> &nbsp;
+          <a href="https://patreon.com" target="_blank">Patreon</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EMAIL CAPTURE -->
+  <section id="email">
+    <div class="email-h">Stay Connected</div>
+    <div class="email-sub">Get updates, artist drops, and ways to support</div>
+    <!-- Replace action with your Mailchimp / ConvertKit form URL -->
+    <form class="email-row" action="#" method="post">
+      <input type="email" name="email" placeholder="your@email.com" required />
+      <button type="submit">Stay Connected</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><span>I.A.M.</span> &nbsp;·&nbsp; Independent Artist Month &nbsp;·&nbsp; July 2026 &nbsp;·&nbsp; Rise Together. Shine Together.</p>
+  </footer>
+
+  <!-- SMOOTH SCROLL -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
